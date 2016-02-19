@@ -1,0 +1,52 @@
+# R-code voor alle menselijke motifs
+human_jaspar = subset (MotifDb, organism=='Hsapiens' & dataSource=='JASPAR_2014')
+matrices = MotifDb [human_jaspar]
+print(as.list(matrices))
+
+# 318 motifs
+#
+# This library was provided courtesy of Boris Lenhard and the JASPAR database (http://jaspar.cgb.ki.se/) on October 15, 2009.
+#
+# The motifs were parsed from the files available on the JASPAR ftp server:
+#    [1] http://jaspar.genereg.net/html/DOWNLOAD/all_data/matrix_only/matrix_only.txt
+#    [2] http://jaspar.genereg.net/html/DOWNLOAD/all_data/FlatFileDir/matrix_list.txt
+# A pseudocount was added to each count in the base count matrix prior to conversion to a frequency matrix.
+# Note that JASPAR allows multiple species to be assigned to a motif, whereas MochiView does not.
+# In the 16 cases where this occurred, the species list is provided in the description and precedence
+# was given to Homo sapiens and then Mus musculus (this covered all cases).
+#
+# 19 species are represented in the JASPAR library (this file only includes entries assigned to Homo sapiens):
+#    Antirrhinum majus: 3 motif(s)
+#    Arabidopsis thaliana: 5 motif(s)
+#    Caenorhabditis elegans: 24 motif(s)
+#    Drosophila melanogaster: 128 motif(s)
+#    Gallus gallus: 2 motif(s)
+#    Halocynthia roretzi: 1 motif(s)
+#    Homo sapiens: 318 motif(s)
+#    Hordeum vulgare: 1 motif(s)
+#    Mus musculus: 428 motif(s)
+#    Oryctolagus cuniculus: 1 motif(s)
+#    Petunia hybrida: 1 motif(s)
+#    Pisum sativum: 3 motif(s)
+#    Rattus norvegicus: 7 motif(s)
+#    Rattus rattus: 1 motif(s)
+#    Saccharomyces cerevisiae: 177 motif(s)
+#    Triticum aestivum: 1 motif(s)
+#    Xenopus laevis: 1 motif(s)
+#    Zea mays: 6 motif(s)
+#    Unlisted Species: 208 motif(s)
+#
+# JASPAR: an open-access database for eukaryotic transcription factor binding profiles
+#    Nucleic Acids Res. 2004 Jan 1; 32(Database issue):D91-4
+#    Sandelin A, Alkema W, Engstrom P, Wasserman WW, Lenhard B.
+# JASPAR, the open access database of transcription factor-binding profiles: new content and tools in the 2008 update
+#    Bryne JC, Valen E, Tang MH, Marstrand T, Winther O, da Piedade I, Krogh A, Lenhard B, Sandelin A.
+#    Nucleic Acids Res. 2008 Jan;36(Database issue):D102-6. Epub 2007 Nov 15.
+#
+# Medline IDs for individual motifs can be found in the description lines of each motif. Full abstracts
+#  and references for these IDs (matched to motif name) are available on the MochiView website.
+#
+
+# Bash-code voor downloaden en uitpakken menselijk genoom
+wget -r -nd -X /genomes/H_sapiens/ARCHIVE,/genomes/H_sapiens/ARCHIVE -t 45 --accept="hs_ref_GRCh38.p2_chr*.gbk.gz" "ftp://ftp.ncbi.nlm.nih.gov/genomes/H_sapiens*"
+gunzip *.gz
